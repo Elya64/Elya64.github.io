@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELYA™ — UX/UI дизайнер</title>
+  <meta name="description" content="Портфолио UX/UI дизайнера. Продуктовый дизайн, который увеличивает конверсию и привлекает внимание.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff5c1c'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>E</text></svg>">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__logo">ELYA <sup>™</sup></a>
+    <nav class="nav__links">
+      <a href="#about">Обо мне</a>
+      <a href="#projects">Проекты</a>
+      <a href="#process">Процесс</a>
+      <a href="#facts">Факты</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a href="#contact" class="nav__cta">Написать мне</a>
+    <button class="nav__burger" id="burger" aria-label="Меню">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">Обо мне</a>
+    <a href="#projects">Проекты</a>
+    <a href="#process">Процесс</a>
+    <a href="#facts">Факты</a>
+    <a href="#contact">Контакты</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__watermark" aria-hidden="true">ELYA</div>
+
+    <div class="hero__figure" aria-hidden="true">
+      <div class="hero__orb"></div>
+      <div class="hero__ring"></div>
+      <div class="hero__ring hero__ring--2"></div>
+    </div>
+
+    <ul class="hero__services reveal">
+      <li>Продуктовый дизайн</li>
+      <li>UX-исследования</li>
+      <li>Дизайн-системы</li>
+      <li>Прототипирование</li>
+    </ul>
+
+    <div class="hero__bottom">
+      <h1 class="hero__title">
+        <span class="hero__line"><span>UX/UI дизайн</span></span>
+        <span class="hero__line"><span>с характером</span></span>
+      </h1>
+      <div class="hero__aside reveal">
+        <p>Помогаю брендам и стартапам создавать цифровой дизайн, который повышает конверсию и удерживает внимание.</p>
+        <a href="#projects" class="btn btn--orange">Смотреть проекты</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLIENTS MARQUEE ===== -->
+  <section class="clients">
+    <div class="clients__inner">
+      <span class="clients__label">Работала с</span>
+      <div class="clients__track-wrap">
+        <div class="clients__track">
+          <span>FOXHUB</span><span>◈ kanba</span><span>⊙ amara</span><span>goldline</span><span>{✳} CodeLab</span><span>treva.</span>
+          <span>FOXHUB</span><span>◈ kanba</span><span>⊙ amara</span><span>goldline</span><span>{✳} CodeLab</span><span>treva.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section-light" id="about">
+    <div class="about__grid">
+      <div class="about__num reveal" aria-hidden="true">0-1</div>
+      <div class="about__content">
+        <span class="label reveal">ELYA ™</span>
+        <div class="about__social reveal">
+          <div class="avatars">
+            <span class="avatar a1"></span>
+            <span class="avatar a2"></span>
+            <span class="avatar a3"></span>
+            <span class="avatar a4"></span>
+            <span class="avatar avatar--more">30+</span>
+          </div>
+          <div class="about__trust">
+            <p>Мне доверяют команды и фаундеры</p>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <h2 class="about__statement reveal">Я помогаю продуктам расти с&nbsp;помощью стратегического дизайна — продуманного, визуально смелого и&nbsp;создающего впечатление.</h2>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card card--quote reveal">
+        <h3>Дизайн, который двигает метрики</h3>
+        <p>«Элина создаёт продуманные цифровые продукты, выстраивает сильные интерфейсы и находит решения, которые дают реальный результат.»</p>
+        <div class="card__person">
+          <span class="avatar a2"></span>
+          <div>
+            <strong>Артём Давыдов</strong>
+            <span>CEO, финтех-стартап</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card--fact reveal">
+        <div class="card__head">
+          <span>Факт 01</span>
+          <span class="card__icon">↗</span>
+        </div>
+        <div class="card__big">+40<sup>%</sup></div>
+        <p>средний рост конверсии после редизайна ключевых сценариев продукта</p>
+      </article>
+
+      <article class="card card--visual reveal">
+        <div class="card__gradient"></div>
+        <p class="card__caption">Дизайн — это история бренда, рассказанная без слов</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects section-light" id="projects">
+    <div class="projects__head">
+      <h2 class="giant reveal">Проекты</h2>
+      <p class="sub reveal">Это история за кадром. Не в словах, а в интерфейсах, которые показывают, как всё сложилось.</p>
+    </div>
+
+    <div class="projects__grid">
+      <a class="project reveal" href="https://github.com/Elya64" target="_blank" rel="noopener">
+        <div class="project__cover pc-1">
+          <div class="project__mock">
+            <div class="mock-bar"></div>
+            <div class="mock-line w70"></div>
+            <div class="mock-line w45"></div>
+            <div class="mock-chip"></div>
+          </div>
+        </div>
+        <div class="project__meta">
+          <h3>Nova Bank — мобильный банк</h3>
+          <span>UX/UI · Мобильное приложение</span>
+        </div>
+      </a>
+
+      <a class="project reveal" href="https://github.com/Elya64" target="_blank" rel="noopener">
+        <div class="project__cover pc-2">
+          <div class="project__mock">
+            <div class="mock-bar"></div>
+            <div class="mock-line w60"></div>
+            <div class="mock-line w80"></div>
+            <div class="mock-chip"></div>
+          </div>
+        </div>
+        <div class="project__meta">
+          <h3>Treva — SaaS-дашборд аналитики</h3>
+          <span>Продуктовый дизайн · Веб</span>
+        </div>
+      </a>
+
+      <a class="project reveal" href="https://github.com/Elya64" target="_blank" rel="noopener">
+        <div class="project__cover pc-3">
+          <div class="project__mock">
+            <div class="mock-bar"></div>
+            <div class="mock-line w50"></div>
+            <div class="mock-line w65"></div>
+            <div class="mock-chip"></div>
+          </div>
+        </div>
+        <div class="project__meta">
+          <h3>Amara — e-commerce платформа</h3>
+          <span>UX-аудит · Редизайн</span>
+        </div>
+      </a>
+
+      <a class="project reveal" href="https://github.com/Elya64" target="_blank" rel="noopener">
+        <div class="project__cover pc-4">
+          <div class="project__mock">
+            <div class="mock-bar"></div>
+            <div class="mock-line w75"></div>
+            <div class="mock-line w40"></div>
+            <div class="mock-chip"></div>
+          </div>
+        </div>
+        <div class="project__meta">
+          <h3>Kanba — дизайн-система</h3>
+          <span>Дизайн-система · UI-кит</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="process section-light" id="process">
+    <div class="process__head">
+      <span class="label reveal">0—1</span>
+      <h2 class="giant reveal">Процесс</h2>
+      <p class="sub reveal">Погрузимся в процесс. От первой идеи до финального запуска — каждый шаг ясен и осознан.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step" data-step>
+        <div class="step__row">
+          <h3>Исследование</h3>
+          <span class="step__num">01</span>
+        </div>
+        <div class="step__body">
+          <p>Изучаю продукт, аудиторию и конкурентов. Провожу интервью, анализирую метрики и формулирую задачи, которые дизайн должен решить.</p>
+        </div>
+      </div>
+      <div class="step" data-step>
+        <div class="step__row">
+          <h3>Концепция</h3>
+          <span class="step__num">02</span>
+        </div>
+        <div class="step__body">
+          <p>Собираю сценарии, строю структуру и прототипы. Проверяю гипотезы на пользователях ещё до того, как появится финальный UI.</p>
+        </div>
+      </div>
+      <div class="step" data-step>
+        <div class="step__row">
+          <h3>Дизайн</h3>
+          <span class="step__num">03</span>
+        </div>
+        <div class="step__body">
+          <p>Прорабатываю визуальный язык: типографика, цвет, сетки, компоненты. Собираю аккуратную дизайн-систему для команды разработки.</p>
+        </div>
+      </div>
+      <div class="step" data-step>
+        <div class="step__row">
+          <h3>Запуск</h3>
+          <span class="step__num">04</span>
+        </div>
+        <div class="step__body">
+          <p>Сопровождаю разработку, проверяю вёрстку, собираю обратную связь после релиза и итеративно улучшаю продукт.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FACTS ===== -->
+  <section class="facts" id="facts">
+    <h2 class="giant giant--light reveal">Цифры<br>&amp; факты</h2>
+    <div class="facts__grid">
+      <div class="fact reveal">
+        <span class="fact__num" data-count="5">0</span><span class="fact__suffix">+</span>
+        <p>лет в продуктовом дизайне</p>
+      </div>
+      <div class="fact reveal">
+        <span class="fact__num" data-count="30">0</span><span class="fact__suffix">+</span>
+        <p>завершённых проектов</p>
+      </div>
+      <div class="fact reveal">
+        <span class="fact__num" data-count="12">0</span><span class="fact__suffix"></span>
+        <p>дизайн-систем собрано с нуля</p>
+      </div>
+      <div class="fact reveal">
+        <span class="fact__num" data-count="95">0</span><span class="fact__suffix">%</span>
+        <p>клиентов возвращаются снова</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <footer class="contact" id="contact">
+    <span class="label label--light reveal">Есть проект?</span>
+    <h2 class="contact__title reveal">Давайте<br>работать вместе</h2>
+    <a href="mailto:errorski404@gmail.com" class="btn btn--orange btn--big reveal">errorski404@gmail.com</a>
+
+    <div class="contact__links reveal">
+      <a href="https://github.com/Elya64" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">Behance</a>
+      <a href="#" target="_blank" rel="noopener">Telegram</a>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 ELYA™</span>
+      <span>UX/UI Designer</span>
+      <a href="#hero" class="footer__top">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

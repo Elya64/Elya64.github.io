@@ -7,61 +7,102 @@
   <meta name="description" content="Портфолио UX/UI дизайнера. Продуктовый дизайн, который увеличивает конверсию и привлекает внимание.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&family=Onest:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ff5c1c'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>E</text></svg>">
 </head>
 <body>
 
+  <!-- ===== SVG FILTER DEFS (ethereal shadow) ===== -->
+  <svg class="svg-defs" aria-hidden="true" width="0" height="0" focusable="false">
+    <defs>
+      <filter id="ethereal" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+        <feTurbulence result="noise" type="fractalNoise" baseFrequency="0.0016 0.0034" numOctaves="2" seed="4">
+          <animate attributeName="baseFrequency" dur="36s" values="0.0016 0.0034;0.0023 0.0026;0.0016 0.0034" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="120" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ===== PRELOADER (elegant lines) ===== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__lines" id="preLines">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="preloader__count"><span id="preCount">0</span></div>
+  </div>
+
   <!-- ===== NAV ===== -->
   <header class="nav" id="nav">
     <a href="#hero" class="nav__logo">ELYA <sup>™</sup></a>
     <nav class="nav__links">
-      <a href="#about">Обо мне</a>
-      <a href="#projects">Проекты</a>
-      <a href="#process">Процесс</a>
-      <a href="#facts">Факты</a>
-      <a href="#contact">Контакты</a>
+      <a href="#about" data-i18n="nav-about">Обо мне</a>
+      <a href="#projects" data-i18n="nav-projects">Проекты</a>
+      <a href="#process" data-i18n="nav-process">Процесс</a>
+      <a href="#facts" data-i18n="nav-facts">Факты</a>
+      <a href="#contact" data-i18n="nav-contact">Контакты</a>
     </nav>
-    <a href="#contact" class="nav__cta">Написать мне</a>
+    <div class="nav__right">
+      <button class="lang-switch" id="langSwitch" aria-label="Switch language" title="Language">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18"></path>
+          <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"></path>
+        </svg>
+        <span id="langLabel">EN</span>
+      </button>
+      <a href="#contact" class="nav__cta" data-i18n="nav-cta">Написать мне</a>
+    </div>
     <button class="nav__burger" id="burger" aria-label="Меню">
       <span></span><span></span>
     </button>
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about">Обо мне</a>
-    <a href="#projects">Проекты</a>
-    <a href="#process">Процесс</a>
-    <a href="#facts">Факты</a>
-    <a href="#contact">Контакты</a>
+    <a href="#about" data-i18n="nav-about">Обо мне</a>
+    <a href="#projects" data-i18n="nav-projects">Проекты</a>
+    <a href="#process" data-i18n="nav-process">Процесс</a>
+    <a href="#facts" data-i18n="nav-facts">Факты</a>
+    <a href="#contact" data-i18n="nav-contact">Контакты</a>
   </div>
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__ethereal"></div>
+      <div class="hero__grid" id="heroGrid">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
     <div class="hero__watermark" aria-hidden="true">ELYA</div>
 
     <div class="hero__figure" aria-hidden="true">
-      <div class="hero__orb"></div>
-      <div class="hero__ring"></div>
-      <div class="hero__ring hero__ring--2"></div>
+      <div class="hero__glow"></div>
+      <img class="hero__portrait" src="assets/portrait.png" alt="" loading="eager">
+      <span class="hero__dot hero__dot--1"></span>
+      <span class="hero__dot hero__dot--2"></span>
     </div>
 
     <ul class="hero__services reveal">
-      <li>Продуктовый дизайн</li>
-      <li>UX-исследования</li>
-      <li>Дизайн-системы</li>
-      <li>Прототипирование</li>
+      <li data-i18n="hero-s1">Продуктовый дизайн</li>
+      <li data-i18n="hero-s2">UX-исследования</li>
+      <li data-i18n="hero-s3">Дизайн-системы</li>
+      <li data-i18n="hero-s4">Прототипирование</li>
     </ul>
 
     <div class="hero__bottom">
       <h1 class="hero__title">
-        <span class="hero__line"><span>UX/UI дизайн</span></span>
-        <span class="hero__line"><span>с характером</span></span>
+        <span class="hero__line"><span data-i18n="hero-t1">UX/UI дизайн</span></span>
+        <span class="hero__line"><span data-i18n="hero-t2">с характером</span></span>
       </h1>
       <div class="hero__aside reveal">
-        <p>Помогаю брендам и стартапам создавать цифровой дизайн, который повышает конверсию и удерживает внимание.</p>
-        <a href="#projects" class="btn btn--orange">Смотреть проекты</a>
+        <p data-i18n="hero-lead">Помогаю брендам и стартапам создавать цифровой дизайн, который повышает конверсию и удерживает внимание.</p>
+        <a href="#projects" class="btn btn--orange" data-i18n="hero-cta">Смотреть проекты</a>
       </div>
     </div>
   </section>
@@ -69,7 +110,7 @@
   <!-- ===== CLIENTS MARQUEE ===== -->
   <section class="clients">
     <div class="clients__inner">
-      <span class="clients__label">Работала с</span>
+      <span class="clients__label" data-i18n="clients-label">Работала с</span>
       <div class="clients__track-wrap">
         <div class="clients__track">
           <span>FOXHUB</span><span>◈ kanba</span><span>⊙ amara</span><span>goldline</span><span>{✳} CodeLab</span><span>treva.</span>
@@ -82,7 +123,10 @@
   <!-- ===== ABOUT ===== -->
   <section class="about section-light" id="about">
     <div class="about__grid">
-      <div class="about__num reveal" aria-hidden="true">0-1</div>
+      <div class="about__index reveal">
+        <span class="about__index-num">01</span>
+        <span class="about__index-label" data-i18n="about-index">О себе</span>
+      </div>
       <div class="about__content">
         <span class="label reveal">ELYA ™</span>
         <div class="about__social reveal">
@@ -94,39 +138,39 @@
             <span class="avatar avatar--more">30+</span>
           </div>
           <div class="about__trust">
-            <p>Мне доверяют команды и фаундеры</p>
+            <p data-i18n="about-trust">Мне доверяют команды и фаундеры</p>
             <div class="stars">★★★★★</div>
           </div>
         </div>
-        <h2 class="about__statement reveal">Я помогаю продуктам расти с&nbsp;помощью стратегического дизайна — продуманного, визуально смелого и&nbsp;создающего впечатление.</h2>
+        <h2 class="about__statement reveal" data-i18n="about-statement">Я помогаю продуктам расти с&nbsp;помощью стратегического дизайна — продуманного, визуально смелого и&nbsp;создающего впечатление.</h2>
       </div>
     </div>
 
     <div class="cards">
       <article class="card card--quote reveal">
-        <h3>Дизайн, который двигает метрики</h3>
-        <p>«Элина создаёт продуманные цифровые продукты, выстраивает сильные интерфейсы и находит решения, которые дают реальный результат.»</p>
+        <h3 data-i18n="q-title">Дизайн, который двигает метрики</h3>
+        <p data-i18n="q-text">«Эля создаёт продуманные цифровые продукты, выстраивает сильные интерфейсы и находит решения, которые дают реальный результат.»</p>
         <div class="card__person">
           <span class="avatar a2"></span>
           <div>
             <strong>Артём Давыдов</strong>
-            <span>CEO, финтех-стартап</span>
+            <span data-i18n="q-role">CEO, финтех-стартап</span>
           </div>
         </div>
       </article>
 
       <article class="card card--fact reveal">
         <div class="card__head">
-          <span>Факт 01</span>
+          <span data-i18n="fact-label">Факт 01</span>
           <span class="card__icon">↗</span>
         </div>
         <div class="card__big">+40<sup>%</sup></div>
-        <p>средний рост конверсии после редизайна ключевых сценариев продукта</p>
+        <p data-i18n="fact-desc">средний рост конверсии после редизайна ключевых сценариев продукта</p>
       </article>
 
       <article class="card card--visual reveal">
         <div class="card__gradient"></div>
-        <p class="card__caption">Дизайн — это история бренда, рассказанная без слов</p>
+        <p class="card__caption" data-i18n="visual-caption">Дизайн — это история бренда, рассказанная без слов</p>
       </article>
     </div>
   </section>
@@ -134,8 +178,8 @@
   <!-- ===== PROJECTS ===== -->
   <section class="projects section-light" id="projects">
     <div class="projects__head">
-      <h2 class="giant reveal">Проекты</h2>
-      <p class="sub reveal">Это история за кадром. Не в словах, а в интерфейсах, которые показывают, как всё сложилось.</p>
+      <h2 class="giant reveal" data-i18n="projects-title">Проекты</h2>
+      <p class="sub reveal" data-i18n="projects-sub">Избранные работы: путь каждого проекта — от исследования и структуры до финального интерфейса, готового к запуску.</p>
     </div>
 
     <div class="projects__grid">
@@ -149,8 +193,8 @@
           </div>
         </div>
         <div class="project__meta">
-          <h3>Nova Bank — мобильный банк</h3>
-          <span>UX/UI · Мобильное приложение</span>
+          <h3 data-i18n="p1-title">Nova Bank — мобильный банк</h3>
+          <span data-i18n="p1-tag">UX/UI · Мобильное приложение</span>
         </div>
       </a>
 
@@ -164,8 +208,8 @@
           </div>
         </div>
         <div class="project__meta">
-          <h3>Treva — SaaS-дашборд аналитики</h3>
-          <span>Продуктовый дизайн · Веб</span>
+          <h3 data-i18n="p2-title">Treva — SaaS-дашборд аналитики</h3>
+          <span data-i18n="p2-tag">Продуктовый дизайн · Веб</span>
         </div>
       </a>
 
@@ -179,8 +223,8 @@
           </div>
         </div>
         <div class="project__meta">
-          <h3>Amara — e-commerce платформа</h3>
-          <span>UX-аудит · Редизайн</span>
+          <h3 data-i18n="p3-title">Amara — e-commerce платформа</h3>
+          <span data-i18n="p3-tag">UX-аудит · Редизайн</span>
         </div>
       </a>
 
@@ -194,8 +238,8 @@
           </div>
         </div>
         <div class="project__meta">
-          <h3>Kanba — дизайн-система</h3>
-          <span>Дизайн-система · UI-кит</span>
+          <h3 data-i18n="p4-title">Kanba — дизайн-система</h3>
+          <span data-i18n="p4-tag">Дизайн-система · UI-кит</span>
         </div>
       </a>
     </div>
@@ -204,46 +248,46 @@
   <!-- ===== PROCESS ===== -->
   <section class="process section-light" id="process">
     <div class="process__head">
-      <span class="label reveal">0—1</span>
-      <h2 class="giant reveal">Процесс</h2>
-      <p class="sub reveal">Погрузимся в процесс. От первой идеи до финального запуска — каждый шаг ясен и осознан.</p>
+      <span class="label reveal">01 — 04</span>
+      <h2 class="giant reveal" data-i18n="process-title">Процесс</h2>
+      <p class="sub reveal" data-i18n="process-sub">Погрузимся в процесс. От первой идеи до финального запуска — каждый шаг ясен и осознан.</p>
     </div>
 
     <div class="steps">
       <div class="step" data-step>
         <div class="step__row">
-          <h3>Исследование</h3>
+          <h3 data-i18n="step1-title">Исследование</h3>
           <span class="step__num">01</span>
         </div>
         <div class="step__body">
-          <p>Изучаю продукт, аудиторию и конкурентов. Провожу интервью, анализирую метрики и формулирую задачи, которые дизайн должен решить.</p>
+          <p data-i18n="step1-body">Изучаю продукт, аудиторию и конкурентов. Провожу интервью, анализирую метрики и формулирую задачи, которые дизайн должен решить.</p>
         </div>
       </div>
       <div class="step" data-step>
         <div class="step__row">
-          <h3>Концепция</h3>
+          <h3 data-i18n="step2-title">Концепция</h3>
           <span class="step__num">02</span>
         </div>
         <div class="step__body">
-          <p>Собираю сценарии, строю структуру и прототипы. Проверяю гипотезы на пользователях ещё до того, как появится финальный UI.</p>
+          <p data-i18n="step2-body">Собираю сценарии, строю структуру и прототипы. Проверяю гипотезы на пользователях ещё до того, как появится финальный UI.</p>
         </div>
       </div>
       <div class="step" data-step>
         <div class="step__row">
-          <h3>Дизайн</h3>
+          <h3 data-i18n="step3-title">Дизайн</h3>
           <span class="step__num">03</span>
         </div>
         <div class="step__body">
-          <p>Прорабатываю визуальный язык: типографика, цвет, сетки, компоненты. Собираю аккуратную дизайн-систему для команды разработки.</p>
+          <p data-i18n="step3-body">Прорабатываю визуальный язык: типографика, цвет, сетки, компоненты. Собираю аккуратную дизайн-систему для команды разработки.</p>
         </div>
       </div>
       <div class="step" data-step>
         <div class="step__row">
-          <h3>Запуск</h3>
+          <h3 data-i18n="step4-title">Запуск</h3>
           <span class="step__num">04</span>
         </div>
         <div class="step__body">
-          <p>Сопровождаю разработку, проверяю вёрстку, собираю обратную связь после релиза и итеративно улучшаю продукт.</p>
+          <p data-i18n="step4-body">Сопровождаю разработку, проверяю вёрстку, собираю обратную связь после релиза и итеративно улучшаю продукт.</p>
         </div>
       </div>
     </div>
@@ -251,31 +295,31 @@
 
   <!-- ===== FACTS ===== -->
   <section class="facts" id="facts">
-    <h2 class="giant giant--light reveal">Цифры<br>&amp; факты</h2>
+    <h2 class="giant giant--light reveal" data-i18n="facts-title">Цифры<br>&amp; факты</h2>
     <div class="facts__grid">
       <div class="fact reveal">
         <span class="fact__num" data-count="5">0</span><span class="fact__suffix">+</span>
-        <p>лет в продуктовом дизайне</p>
+        <p data-i18n="f1">лет в продуктовом дизайне</p>
       </div>
       <div class="fact reveal">
         <span class="fact__num" data-count="30">0</span><span class="fact__suffix">+</span>
-        <p>завершённых проектов</p>
+        <p data-i18n="f2">завершённых проектов</p>
       </div>
       <div class="fact reveal">
         <span class="fact__num" data-count="12">0</span><span class="fact__suffix"></span>
-        <p>дизайн-систем собрано с нуля</p>
+        <p data-i18n="f3">дизайн-систем собрано с нуля</p>
       </div>
       <div class="fact reveal">
         <span class="fact__num" data-count="95">0</span><span class="fact__suffix">%</span>
-        <p>клиентов возвращаются снова</p>
+        <p data-i18n="f4">клиентов возвращаются снова</p>
       </div>
     </div>
   </section>
 
   <!-- ===== CONTACT / FOOTER ===== -->
   <footer class="contact" id="contact">
-    <span class="label label--light reveal">Есть проект?</span>
-    <h2 class="contact__title reveal">Давайте<br>работать вместе</h2>
+    <span class="label label--light reveal" data-i18n="contact-label">Есть проект?</span>
+    <h2 class="contact__title reveal" data-i18n="contact-title">Давайте<br>работать вместе</h2>
     <a href="mailto:errorski404@gmail.com" class="btn btn--orange btn--big reveal">errorski404@gmail.com</a>
 
     <div class="contact__links reveal">
@@ -287,7 +331,7 @@
     <div class="footer__bottom">
       <span>© 2026 ELYA™</span>
       <span>UX/UI Designer</span>
-      <a href="#hero" class="footer__top">Наверх ↑</a>
+      <a href="#hero" class="footer__top" data-i18n="footer-top">Наверх ↑</a>
     </div>
   </footer>
 

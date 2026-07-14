@@ -40,30 +40,40 @@ a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 
 /* ============ REVEAL ANIMATION (blur-in) ============ */
-.reveal {
+/* Hidden states only apply when JS is active (html.js). Without JS — or if the
+   reveal never fires — content stays fully visible (no "stuck/blank" state). */
+html.js .reveal {
   opacity: 0;
-  filter: blur(12px);
-  transform: translateY(14px);
-  transition: opacity 1s cubic-bezier(.22,1,.36,1), filter 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1);
+  filter: blur(8px);
+  transform: translateY(12px);
+  transition: opacity .5s cubic-bezier(.22,1,.36,1), filter .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1);
 }
-.reveal.is-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+html.js .reveal.is-visible { opacity: 1; filter: blur(0); transform: none; }
 
 /* ============ PER-CHARACTER BLUR-IN ============ */
-.bchar {
-  display: inline-block;
-  white-space: pre;
+.bchar { display: inline-block; white-space: pre; }
+html.js .bchar {
   opacity: 0;
-  filter: blur(14px);
-  transform: translateY(.24em);
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), filter .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  filter: blur(8px);
+  transform: translateY(.18em);
+  transition: opacity .42s cubic-bezier(.22,1,.36,1), filter .42s cubic-bezier(.22,1,.36,1), transform .42s cubic-bezier(.22,1,.36,1);
 }
-.is-revealed .bchar { opacity: 1; filter: blur(0); transform: translateY(0); }
+html.js .is-revealed .bchar { opacity: 1; filter: blur(0); transform: none; }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .bchar { transition: none; filter: none; transform: none; opacity: 1; }
+  html.js .reveal,
+  html.js .bchar {
+    transition: none !important;
+    filter: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 
 /* ============ PRELOADER (elegant lines) ============ */
 body.is-loading { overflow: hidden; }
+/* No JS → never show the blocking overlay (content is immediately usable). */
+html:not(.js) .preloader { display: none; }
 .preloader {
   position: fixed;
   inset: 0;

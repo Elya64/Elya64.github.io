@@ -1,11 +1,44 @@
+document.documentElement.classList.add('js');
+
+// Force an element (and its blur-chars) to its final visible state instantly,
+// with no transition. Used when the tab is hidden so a paused CSS transition
+// can never leave content frozen mid-blur.
+function snapVisible(el) {
+  const set = n => { n.style.transition = 'none'; n.style.opacity = '1'; n.style.filter = 'none'; n.style.transform = 'none'; };
+  set(el);
+  el.querySelectorAll('.bchar').forEach(set);
+}
+
+// Reveal any not-yet-revealed element that is currently in the viewport.
+// Safety net so content can never stay stuck hidden/blurred (e.g. a
+// background/throttled tab where CSS transitions freeze mid-flight).
+function revealInView() {
+  const hidden = document.hidden;
+  document.querySelectorAll('.reveal:not(.is-visible), .is-split:not(.is-revealed)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight + 40 && r.bottom > -40) {
+      el.classList.add('is-visible', 'is-revealed');
+      if (hidden) snapVisible(el);
+    }
+  });
+}
+
 // ===== Preloader (elegant lines) =====
 document.body.classList.add('is-loading');
 (function preloader() {
   const pre = document.getElementById('preloader');
   const countEl = document.getElementById('preCount');
-  if (!pre) { document.body.classList.remove('is-loading'); document.body.classList.add('loaded'); initReveals(); return; }
 
-  const DURATION = 1900;
+  function reveal() {
+    document.body.classList.remove('is-loading');
+    document.body.classList.add('loaded');
+    initReveals();
+    revealInView();
+  }
+
+  if (!pre) { reveal(); return; }
+
+  const DURATION = 1400;
   const start = Date.now();
   let done = false;
 
@@ -16,11 +49,9 @@ document.body.classList.add('is-loading');
     if (countEl) countEl.textContent = 100;
     setTimeout(() => {
       pre.classList.add('is-done');
-      document.body.classList.remove('is-loading');
-      document.body.classList.add('loaded');
-      initReveals();
+      reveal();
       setTimeout(() => pre.remove(), 950);
-    }, 260);
+    }, 220);
   }
 
   const iv = setInterval(() => {
@@ -28,8 +59,24 @@ document.body.classList.add('is-loading');
     if (countEl) countEl.textContent = Math.floor(t * 100);
     if (t >= 1) finish();
   }, 16);
-  setTimeout(finish, DURATION + 700);
+  setTimeout(finish, DURATION + 600);
 })();
+
+// Failsafe: whatever happens with the preloader/observers, make sure
+// on-screen content is visible shortly after load, and whenever the tab
+// becomes visible (unfreezes anything a background load left mid-reveal).
+setTimeout(() => {
+  document.body.classList.remove('is-loading');
+  document.body.classList.add('loaded');
+  const p = document.getElementById('preloader');
+  if (p) { p.classList.add('is-done'); setTimeout(() => p.remove(), 950); }
+  if (typeof initReveals === 'function') initReveals();
+  revealInView();
+}, 3200);
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') revealInView();
+});
 
 // ===== Per-character blur-in text =====
 const BLUR_SELECTOR = '.hero__line > span, .giant, .about__statement, .contact__title';
@@ -50,7 +97,7 @@ function splitToChars(el) {
   });
   el.innerHTML = '';
   el.appendChild(frag);
-  el.querySelectorAll('.bchar').forEach((s, i) => { s.style.transitionDelay = (i * 0.026) + 's'; });
+  el.querySelectorAll('.bchar').forEach((s, i) => { s.style.transitionDelay = Math.min(i * 0.02, 0.5) + 's'; });
   el.classList.remove('reveal', 'is-visible'); // avoid double animation with per-char
   el.classList.add('is-split');
 }
